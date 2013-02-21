@@ -1,0 +1,10 @@
+Current Status as of Feb 22, 2013
+
+
+Current patches:
+
+01_remove_av_gettime_symlink.patch
+  dalecurtis: In order to preserve ABI compatibility after av_gettime() was
+  moved inside the FFmpeg code base, they added a "symbolic link" version which
+  our build chain doesn't like.  Remove it until the next major version bump.
+

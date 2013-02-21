@@ -1,0 +1,18 @@
+diff --git a/files/ffmpeg-1.1.2/libavformat/utils.c b/files/ffmpeg-1.1.2/libavformat/utils.c
+index 5cbf7ca..96f518d 100644
+--- a/files/ffmpeg-1.1.2/libavformat/utils.c
++++ b/files/ffmpeg-1.1.2/libavformat/utils.c
+@@ -3575,13 +3575,6 @@ void av_dump_format(AVFormatContext *ic,
+     av_free(printed);
+ }
+ 
+-#if FF_API_AV_GETTIME && CONFIG_SHARED && HAVE_SYMVER
+-FF_SYMVER(int64_t, av_gettime, (void), "LIBAVFORMAT_54")
+-{
+-    return av_gettime();
+-}
+-#endif
+-
+ uint64_t ff_ntp_time(void)
+ {
+   return (av_gettime() / 1000) * 1000 + NTP_OFFSET_US;
