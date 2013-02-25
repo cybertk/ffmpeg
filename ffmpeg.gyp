@@ -100,9 +100,10 @@
             '_XOPEN_SOURCE=600',
             'PIC',
           ],
-          'link_settings': {
-            'libraries': [ '-lx264', '-lfaac'],
-          },
+          'dependencies': [
+            '../faac/faac.gyp:faac',
+            '../x264/x264.gyp:x264',
+          ],
           'cflags': [
             '-fPIC',
             '-fomit-frame-pointer',
