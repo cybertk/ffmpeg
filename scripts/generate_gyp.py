@@ -80,6 +80,8 @@ GYP_FOOTER = """  },
 """
 
 
+GYP_VAR_SOURCE_DIR = """    'ffmpeg_source_dir': '%s',
+"""
 GYP_CONDITIONAL_BEGIN = """    'conditions': [
 """
 GYP_CONDITIONAL_END = """    ],  # conditions
@@ -110,7 +112,7 @@ GYP_HEADERS_STANZA_ITEM = """      '%s',
 """
 
 # Controls GYP conditional stanza generation.
-SUPPORTED_ARCHITECTURES = ['ia32', 'arm', 'arm-neon']
+SUPPORTED_ARCHITECTURES = ['ia32', 'x64', 'arm', 'arm-neon']
 SUPPORTED_TARGETS = ['AvaConverter']
 # Mac doesn't have any platform specific files, so just use linux and win.
 SUPPORTED_PLATFORMS = ['linux', 'win']
@@ -479,6 +481,8 @@ def main():
   output_name = os.path.join(options.build_dir, 'ffmpeg_generated.gypi')
   fd = open(output_name, 'w')
   fd.write(GYP_HEADER)
+
+  fd.write(GYP_VAR_SOURCE_DIR % options.source_dir)
 
   sets = []
 
