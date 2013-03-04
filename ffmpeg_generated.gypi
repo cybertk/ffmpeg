@@ -6,8 +6,16 @@
 
 {
   'variables': {
-    'ffmpeg_source_dir': 'files/ffmpeg-1.1.2',
+    'ffmpeg_source_dir': 'files/ffmpeg-1.1.2/',
     'conditions': [
+      ['(target_arch == "x64") and (1) and (1)', {
+        'c_sources': [
+          'files/ffmpeg-1.1.2/libavutil/crc.c',
+        ],
+        'converter_outputs': [
+          '<(shared_generated_dir)/files/ffmpeg-1.1.2/libavutil/crc.c',
+        ],
+      }],  # (target_arch == "x64") and (1) and (1)
       ['(target_arch == "ia32" or target_arch == "x64") and (1) and (1)', {
         'c_sources': [
           'files/ffmpeg-1.1.2/libavcodec/allcodecs.c',
@@ -99,7 +107,6 @@
           'files/ffmpeg-1.1.2/libavutil/bprint.c',
           'files/ffmpeg-1.1.2/libavutil/channel_layout.c',
           'files/ffmpeg-1.1.2/libavutil/cpu.c',
-          'files/ffmpeg-1.1.2/libavutil/crc.c',
           'files/ffmpeg-1.1.2/libavutil/dict.c',
           'files/ffmpeg-1.1.2/libavutil/error.c',
           'files/ffmpeg-1.1.2/libavutil/eval.c',
@@ -251,7 +258,6 @@
           '<(shared_generated_dir)/files/ffmpeg-1.1.2/libavutil/bprint.c',
           '<(shared_generated_dir)/files/ffmpeg-1.1.2/libavutil/channel_layout.c',
           '<(shared_generated_dir)/files/ffmpeg-1.1.2/libavutil/cpu.c',
-          '<(shared_generated_dir)/files/ffmpeg-1.1.2/libavutil/crc.c',
           '<(shared_generated_dir)/files/ffmpeg-1.1.2/libavutil/dict.c',
           '<(shared_generated_dir)/files/ffmpeg-1.1.2/libavutil/error.c',
           '<(shared_generated_dir)/files/ffmpeg-1.1.2/libavutil/eval.c',
