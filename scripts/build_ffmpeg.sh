@@ -51,7 +51,7 @@ TARGET_OS=$1
 TARGET_ARCH=$2
 FFMPEG_PATH=$3
 CONFIG_ONLY=$4
-WORKING_PATH=$PWD
+WORKING_PATH=$(pwd -L)
 
 # Check TARGET_OS (TARGET_ARCH is checked during configuration).
 if [[ "$TARGET_OS" != "linux" &&
@@ -390,6 +390,10 @@ add_flag_avaconverter --enable-muxer=mp4
 add_flag_avaconverter --enable-muxer=rtp
 
 # Enable x264.
+CFLAGS="-I$WORKING_PATH/../x264/files/x264"
+CFLAGS="-I$WORKING_PATH/../x264/config/AvaConverter/linux/x64 $CFLAGS"
+CFLAGS="-I$WORKING_PATH/../faac/files/faac-1.28/include $CFLAGS"
+add_flag_avaconverter --extra-cflags="'$CFLAGS'"
 add_flag_avaconverter --enable-libx264
 add_flag_avaconverter --enable-gpl
 
